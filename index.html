@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			width: 300px;
+			border:1px solid #000;		
+			margin : 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h2>聊天机器人-清爽版本</h2>
+	<input type="text">
+	<input type="button" value="发送">
+	<h3>聊天框</h3>
+		<ul>
+		</ul>
+	<script>
+		var btn = document.getElementsByTagName('input')[1];
+		btn.onclick = function(){
+		var li= document.createElement('li');
+		li.innerHTML=document.getElementsByTagName('input')[0].value;
+		document.getElementsByTagName('ul')[0].appendChild(li);
+		// ajax
+		var xhr = new XMLHttpRequest();
+		// 请求头
+		xhr.open('get','chat.php');
+		xhr.onload = function(){
+		var myli= document.createElement('li');
+		 myli.innerHTML =xhr.responseText;
+		 document.getElementsByTagName('ul')[0].appendChild(myli);
+		}
+		xhr.send(null);
+
+		}
+
+		
+	</script>
+</body>
+</html>
